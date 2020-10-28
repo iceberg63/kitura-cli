@@ -20,7 +20,8 @@ script:
 
 deploy:
   provider: releases
-  api_key: "GITHUB OAUTH TOKEN"
+  api_key:
+    secure: "WqILi2bK2R4umwcQMcTF0/gp/24hgpDzm9PsoCCyfYZjjfVgm2zTP7RovBqHenYU8c4tGsafoIpoOo9cumJcaGBCt+s2iR/haTHP0uuwa2XbVDNdeJ1KTDcRqrkT5yS7O+X3DrqSwRJJbA5fDpSn8i/3Q4jrh84IZBUXNNLbsqKBpDOS08wjgjhSh8/S3mOmJGGiXArJJ4MdPZXLZzE4PEthiH8lDDuHxh1lo4OkPuYRvQ/BoD/n9ddJqUrM8K8OixwxUM55DlJASYa+yn6CWoZyfOnlbU6EXEaSmzf7bqRBwkeV7ZNXJN1gds1Ztf+E2Dt6Q5Tv6mMi10nOb0gNdfBdAV3uHAgw48Z4C/teNr+YMKPTdAZspbEE3umvFi0EK2MEoCd81lYmaVcoTRO/4p88IaBmQbmlJG9xUdfVDB6WkSAlKyyUW6ACGh1jnayHFMuVrUqYZtdmrr4tqjd25j6u9zTHQiSxGgMfDA/FM50Guwpy2o7L9Y62GIjG/O7XdNPB+07c0zGrHCsGA5XvqTy7hTas8MKd1leWiKicAFhtoOb9tJjWShf4X8gGGyIuAZVOGYaMoMUBkY0/T8RTyi5Rp3xodTr8uTI9ihAa6kRQKjXMfJyg4AITdH71H98l7voGwYzK7ZpJGTGkPANz7e3ggZKLlADNn1fFvxXsPgY="
   file: 
    - kitura-cli_${TRAVIS_TAG}_amd64.deb
    - kitura-cli_${TRAVIS_TAG}_darwin.tar.gz
