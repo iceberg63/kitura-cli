@@ -67,6 +67,7 @@ package-linux: build-linux
 	chmod -R 755 $(LINUX_DIR)$(LINUX_PATH)
 	dpkg-deb --build $(PACKAGE_NAME)_$(RELEASE)
 	mv $(PACKAGE_NAME)_$(RELEASE).deb $(PACKAGE_NAME)_$(RELEASE)_amd64.deb
+	tar -czf $(PACKAGE_NAME)_$(RELEASE)_linux.tar.gz $(LINUX_DIR)
 	rm -r $(PACKAGE_NAME)_$(RELEASE)
 
 package-darwin-tar: build-darwin
