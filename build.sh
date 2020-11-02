@@ -35,7 +35,7 @@ function test_Darwin() {
 function test_Linux() {
     # Check that command does not already exist
     kitura && failCmdFound || echo "Command 'kitura' not found - OK"
-    sudo dpkg -i kitura-cli_${RELEASE}_amd64.deb
+    sudo dpkg -i --force-depends kitura-cli_${RELEASE}_amd64.deb
     # Check reported CLI version matches our release
     cliVersion=`kitura --version`
     if [ "$cliVersion" == $RELEASE ]; then
