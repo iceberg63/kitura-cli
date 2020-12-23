@@ -56,6 +56,7 @@ case `uname` in
     test_Darwin
     ;;
   Linux)
+    echo ${GOPATH}
     make debug
     #make
     # test_Linux
