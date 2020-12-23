@@ -29,7 +29,7 @@ jobs:
         echo ${GOPATH}
         echo ${GOROOT}
         ls
-        ls /homr/runner/go/src
+        ls /home/runner/go/src
 
     #- name: Build
     #  run: ./build.sh 0.2.3
