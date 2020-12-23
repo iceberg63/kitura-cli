@@ -1,7 +1,4 @@
 name: Go
-env:
-  GOPATH: $HOME/gotestsomething
-  RELEASE: 0.2.3
 
 on:
   push:
