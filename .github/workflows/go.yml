@@ -26,6 +26,7 @@ jobs:
     
     - name: test paths
       run: |
+        echo ${RELEASE}
         pwd
         echo ${HOME}
         echo ${GITHUB_WORKSPACE}
