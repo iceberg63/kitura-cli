@@ -20,6 +20,14 @@ jobs:
 
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
+      
+    - name: test paths
+      run: |
+        pwd
+        echo ${HOME}
+        echo ${GITHUB_WORKSPACE}
+        echo ${GOPATH}
+        echo ${GOROOT}
 
     - name: Build
       run: ./build.sh 0.2.3
