@@ -28,6 +28,8 @@ jobs:
         echo ${GITHUB_WORKSPACE}
         echo ${GOPATH}
         echo ${GOROOT}
+        ls
+        ls /homr/runner/go/src
 
-    - name: Build
-      run: ./build.sh 0.2.3
+    #- name: Build
+    #  run: ./build.sh 0.2.3
