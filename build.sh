@@ -55,7 +55,8 @@ case `uname` in
     test_Darwin
     ;;
   Linux)
-    make
+    debug
+    #make
     # test_Linux
     ;;
   *)
