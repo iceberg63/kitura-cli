@@ -23,6 +23,8 @@ ifeq ($(UNAME_S),Darwin)
     SED_FLAGS := ""
 endif
 
+debug:
+
 all: build package
 build: build-linux build-darwin
 package: package-linux package-darwin
