@@ -8,7 +8,7 @@ if [ -z "$1" ]; then
 fi
 
 export RELEASE=$1
-export GOPATH=$HOME/gotestsomething
+export GOPATH=$(HOME)/kitura-cli-$(RELEASE)
 
 function failCmdFound() {
     echo "Error - 'kitura' command already exists"
