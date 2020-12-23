@@ -21,6 +21,9 @@ jobs:
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
       
+    - name: Build
+      run: ./build.sh 0.2.3
+    
     - name: test paths
       run: |
         pwd
@@ -30,5 +33,3 @@ jobs:
         echo ${GOROOT}
         ls
         
-    #- name: Build
-    #  run: ./build.sh 0.2.3
