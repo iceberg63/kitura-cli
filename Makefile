@@ -13,8 +13,8 @@ MACOS_DIR=darwin-amd64
 MACOS_PATH=/
 MACOS_BINARY=$(MACOS_DIR)$(MACOS_PATH)/$(BINARY_NAME)
 
-# GOPATH=$(HOME)/kitura-cli-$(RELEASE)
-# KITURA_SRC=$(GOPATH)/src/kitura
+GOPATH=$(HOME)/kitura-cli-$(RELEASE)
+KITURA_SRC=$(GOPATH)/src/kitura
 
 # Handle additional param for sed -i on Darwin
 SED_FLAGS=
@@ -40,8 +40,8 @@ ifndef RELEASE
 endif
 	
 	# Copy kitura/cmd module into GOPATH
-	# mkdir -p $(KITURA_SRC)
-	# cp -R -p cmd $(KITURA_SRC)
+	mkdir -p $(KITURA_SRC)
+	cp -R -p cmd $(KITURA_SRC)
 	# Replace release placeholders in sources
 	cp install.sh.ver install.sh
 	cp kitura.rb.ver kitura.rb
@@ -59,8 +59,8 @@ build-darwin: setup deps
 	GOOS=darwin GOARCH=amd64 $(GOBUILD) -o $(MACOS_BINARY) -v
 
 test:
-	# cd $(KITURA_SRC)
-	# $(GOTEST) kitura/cmd
+	cd $(KITURA_SRC)
+	$(GOTEST) kitura/cmd
 
 package-linux: build-linux
 	cp -R -p $(LINUX_DIR) $(PACKAGE_NAME)_$(RELEASE)
