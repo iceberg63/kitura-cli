@@ -27,11 +27,5 @@ jobs:
     - name: test paths
       run: |
         make build-linux
-        echo ${RELEASE}
-        pwd
-        echo ${HOME}
-        echo ${GITHUB_WORKSPACE}
-        echo ${GOPATH}
-        echo ${GOROOT}
-        ls
-        
+        ls linux-amd64
+        ls linux-amd64/usr/local/bin/        
