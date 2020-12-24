@@ -21,19 +21,19 @@ debug:
 all: build package
 build: build-linux build-darwin
 package: package-linux package-darwin
-clean: 
+clean:
 	go clean
 	rm -f install.sh
 	rm -f $(LINUX_DIR)/DEBIAN/control
 	rm -rf $(LINUX_DIR)/usr
 	rm -rf $(MACOS_DIR)
 
-setup:
+setup_release:
 	# Check RELEASE is set
-ifndef RELEASE
-	$(error RELEASE is not set)
-endif
-	
+	ifndef RELEASE
+		$(error RELEASE is not set)
+	endif
+
 	# Copy kitura/cmd module into GOPATH
 	mkdir -p $(KITURA_SRC)
 	cp -R -p cmd $(KITURA_SRC)
@@ -42,20 +42,23 @@ endif
 	cp kitura.rb.ver kitura.rb
 	cp $(LINUX_DIR)/DEBIAN/control.ver $(LINUX_DIR)/DEBIAN/control
 	sed -i $(SED_FLAGS) -e"s#@@RELEASE@@#$(RELEASE)#g" install.sh $(LINUX_DIR)/DEBIAN/control $(KITURA_SRC)/cmd/root.go kitura.rb
+
+setup_test:
+	# Copy kitura/cmd module into GOPATH
+	mkdir -p $(KITURA_SRC)
+	cp -R -p cmd $(KITURA_SRC)
+
 deps:
 	# Install dependencies
 	go get github.com/spf13/cobra/cobra
 	go get gopkg.in/src-d/go-git.v4/...
 
-build-linux: setup deps
+## Linux
+build-linux-test: setup_test deps
 	GOOS=linux GOARCH=amd64 go build -o $(LINUX_BINARY) -v
 
-build-darwin: setup deps
-	GOOS=darwin GOARCH=amd64 go build -o $(MACOS_BINARY) -v
-
-test:
-	cd $(KITURA_SRC)
-	go test kitura/cmd
+build-linux-release: setup_release deps
+	GOOS=linux GOARCH=amd64 go build -o $(LINUX_BINARY) -v
 
 package-linux: build-linux
 	cp -R -p $(LINUX_DIR) $(PACKAGE_NAME)_$(RELEASE)
@@ -64,6 +67,10 @@ package-linux: build-linux
 	mv $(PACKAGE_NAME)_$(RELEASE).deb $(PACKAGE_NAME)_$(RELEASE)_amd64.deb
 	tar -czf $(PACKAGE_NAME)_$(RELEASE)_linux.tar.gz $(LINUX_DIR)/usr/
 	rm -r $(PACKAGE_NAME)_$(RELEASE)
+
+## MacOS
+build-darwin: setup deps
+	GOOS=darwin GOARCH=amd64 go build -o $(MACOS_BINARY) -v
 
 package-darwin-tar: build-darwin
 	tar -czf $(PACKAGE_NAME)_$(RELEASE)_darwin.tar.gz $(MACOS_DIR)

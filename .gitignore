@@ -2,3 +2,4 @@
 install.sh
 linux-amd64/DEBIAN/control
 kitura.rb
+.github/.DS_Store

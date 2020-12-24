@@ -1,0 +1,31 @@
+name: Test MacOS
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: macos-latest
+    steps:
+
+    - name: Set up Go 1.x
+      uses: actions/setup-go@v2
+      with:
+        go-version: ^1.13
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+
+    - name: Build
+      run: ./build_test.sh
+
+    #- name: test paths
+    #  run: |
+    #    make build-linux
+    #    ls linux-amd64
+    #    ls linux-amd64/usr/local/bin/
