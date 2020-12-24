@@ -1,9 +1,3 @@
-GOCMD=go
-GOBUILD=$(GOCMD) build
-GOGET=$(GOCMD) get
-GOCLEAN=$(GOCMD) clean
-GOTEST=$(GOCMD) test
-
 BINARY_NAME=kitura
 PACKAGE_NAME=kitura-cli
 LINUX_DIR=linux-amd64
@@ -13,7 +7,6 @@ MACOS_DIR=darwin-amd64
 MACOS_PATH=/
 MACOS_BINARY=$(MACOS_DIR)$(MACOS_PATH)/$(BINARY_NAME)
 
-# GOPATH=$(HOME)/go
 KITURA_SRC=$(HOME)/go/src/kitura
 
 # Handle additional param for sed -i on Darwin
@@ -37,9 +30,9 @@ clean:
 
 setup:
 	# Check RELEASE is set
-#ifndef RELEASE
-#	$(error RELEASE is not set)
-#endif
+ifndef RELEASE
+	$(error RELEASE is not set)
+endif
 	
 	# Copy kitura/cmd module into GOPATH
 	mkdir -p $(KITURA_SRC)
