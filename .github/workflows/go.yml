@@ -26,7 +26,7 @@ jobs:
     
     - name: test paths
       run: |
-        make debug
+        make deps build-linux
         echo ${RELEASE}
         pwd
         echo ${HOME}
