@@ -29,7 +29,7 @@ all: build package
 build: build-linux build-darwin
 package: package-linux package-darwin
 clean: 
-	$(GOCLEAN)
+	go clean
 	rm -f install.sh
 	rm -f $(LINUX_DIR)/DEBIAN/control
 	rm -rf $(LINUX_DIR)/usr
@@ -51,18 +51,18 @@ setup:
 	sed -i $(SED_FLAGS) -e"s#@@RELEASE@@#$(RELEASE)#g" install.sh $(LINUX_DIR)/DEBIAN/control $(KITURA_SRC)/cmd/root.go kitura.rb
 deps:
 	# Install dependencies
-	$(GOGET) github.com/spf13/cobra/cobra
-	$(GOGET) gopkg.in/src-d/go-git.v4/...
+	go get github.com/spf13/cobra/cobra
+	go get gopkg.in/src-d/go-git.v4/...
 
 build-linux: setup deps
-	GOOS=linux GOARCH=amd64 $(GOBUILD) -o $(LINUX_BINARY) -v
+	GOOS=linux GOARCH=amd64 go build -o $(LINUX_BINARY) -v
 
 build-darwin: setup deps
-	GOOS=darwin GOARCH=amd64 $(GOBUILD) -o $(MACOS_BINARY) -v
+	GOOS=darwin GOARCH=amd64 go build -o $(MACOS_BINARY) -v
 
 test:
 	cd $(KITURA_SRC)
-	$(GOTEST) kitura/cmd
+	go test kitura/cmd
 
 package-linux: build-linux
 	cp -R -p $(LINUX_DIR) $(PACKAGE_NAME)_$(RELEASE)
