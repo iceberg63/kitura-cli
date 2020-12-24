@@ -55,8 +55,8 @@ case `uname` in
     test_Darwin
     ;;
   Linux)
-    make build-linux test
-    # test_Linux
+    make package-linux
+    test_Linux
     ;;
   *)
     echo "Unsupported OS: `uname`"
