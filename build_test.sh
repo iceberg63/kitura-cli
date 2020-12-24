@@ -11,7 +11,7 @@ function test_Darwin() {
 
 function test_Linux() {
     # Check that kitura init successfully produces a project
-    kitura init --dir TestProj
+    ./linux-amd64/usr/local/bin/kitura init --dir TestProj
     rm -rf TestProj
 }
 
