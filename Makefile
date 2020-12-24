@@ -13,8 +13,8 @@ MACOS_DIR=darwin-amd64
 MACOS_PATH=/
 MACOS_BINARY=$(MACOS_DIR)$(MACOS_PATH)/$(BINARY_NAME)
 
-GOPATH=$(HOME)/kitura-cli-$(RELEASE)
-KITURA_SRC=$(GOPATH)/src/kitura
+# GOPATH=$(HOME)/go
+KITURA_SRC=$(HOME)/go/src/kitura
 
 # Handle additional param for sed -i on Darwin
 SED_FLAGS=
@@ -37,9 +37,9 @@ clean:
 
 setup:
 	# Check RELEASE is set
-ifndef RELEASE
-	$(error RELEASE is not set)
-endif
+#ifndef RELEASE
+#	$(error RELEASE is not set)
+#endif
 	
 	# Copy kitura/cmd module into GOPATH
 	mkdir -p $(KITURA_SRC)
@@ -54,7 +54,7 @@ deps:
 	$(GOGET) github.com/spf13/cobra/cobra
 	$(GOGET) gopkg.in/src-d/go-git.v4/...
 
-build-linux:
+build-linux: setup deps
 	GOOS=linux GOARCH=amd64 $(GOBUILD) -o $(LINUX_BINARY) -v
 
 build-darwin: setup deps
