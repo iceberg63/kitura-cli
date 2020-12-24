@@ -54,7 +54,7 @@ deps:
 	$(GOGET) github.com/spf13/cobra/cobra
 	$(GOGET) gopkg.in/src-d/go-git.v4/...
 
-build-linux: setup deps
+build-linux:
 	GOOS=linux GOARCH=amd64 $(GOBUILD) -o $(LINUX_BINARY) -v
 
 build-darwin: setup deps
