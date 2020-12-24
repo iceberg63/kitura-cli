@@ -22,7 +22,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Install depends
-      run: apt-get update && apt-get install -y libcurl4-openssl-dev libssl-dev
+      run: sudo apt-get update && sudo apt-get install -y libcurl4-openssl-dev libssl-dev
 
     - name: Setup - Build - Test
       run: ./build_test.sh
