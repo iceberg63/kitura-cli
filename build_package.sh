@@ -7,7 +7,7 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-export RELEASE=$1
+export RELEASE=0.0.2
 
 function failCmdFound() {
     echo "Error - 'kitura' command already exists"
