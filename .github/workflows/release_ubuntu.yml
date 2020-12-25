@@ -28,7 +28,7 @@ jobs:
       run: ./build_package.sh ${{ github.ref }}
 
     - name: Create Release
-        id: create_release
+        #id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
