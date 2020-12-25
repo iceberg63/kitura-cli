@@ -60,11 +60,11 @@ build-linux-test: setup_test deps
 build-linux-release: setup_release deps
 	GOOS=linux GOARCH=amd64 go build -o $(LINUX_BINARY) -v
 
-package-linux: build-linux
+package-linux: build-linux-release
 	cp -R -p $(LINUX_DIR) $(PACKAGE_NAME)_$(RELEASE)
 	chmod -R 755 $(LINUX_DIR)$(LINUX_PATH)
 	dpkg-deb --build $(PACKAGE_NAME)_$(RELEASE)
-	mv $(PACKAGE_NAME)_$(RELEASE).deb $(PACKAGE_NAME)_$(RELEASE)_amd64.deb
+	mv $(PACKAGE_NAME)_$(RELEASE).deb kitura-cli_test_amd64.deb
 	tar -czf $(PACKAGE_NAME)_$(RELEASE)_linux.tar.gz $(LINUX_DIR)/usr/
 	rm -r $(PACKAGE_NAME)_$(RELEASE)
 

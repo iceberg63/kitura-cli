@@ -56,7 +56,6 @@ case `uname` in
     ;;
   Linux)
     make package-linux
-    test_Linux
     ;;
   *)
     echo "Unsupported OS: `uname`"
