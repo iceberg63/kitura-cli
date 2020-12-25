@@ -7,7 +7,7 @@ set -ex
 #     exit 1
 # fi
 
-export RELEASE=0.0.2
+export RELEASE='0.0.2'
 
 case `uname` in
   Darwin)
