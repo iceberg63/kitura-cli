@@ -1,3 +1,4 @@
+RELEASE=0.2.7
 BINARY_NAME=kitura
 PACKAGE_NAME=kitura-cli
 LINUX_DIR=linux-amd64
