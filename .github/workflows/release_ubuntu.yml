@@ -25,7 +25,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y libcurl4-openssl-dev libssl-dev
 
     - name: Setup - Build - Test
-      run: ./build_package.sh ${{ github.ref }}
+      run: ./build_package.sh 0.0.1
 
     - name: Create Release
       id: create_release
