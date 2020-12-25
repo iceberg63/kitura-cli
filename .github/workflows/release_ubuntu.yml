@@ -9,7 +9,7 @@ on:
 jobs:
 
   build:
-    name: Setup - Build - Test
+    name: Setup - Build - Deploy
     runs-on: ubuntu-latest
     steps:
 
@@ -21,7 +21,7 @@ jobs:
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
 
-    - name: Setup - Build - Test
+    - name: Setup - Build - Deploy
       run: ./build_package.sh
 
     - name: Create Release

@@ -30,10 +30,6 @@ clean:
 	rm -rf $(MACOS_DIR)
 
 setup_release:
-	# Check RELEASE is set
-	ifndef RELEASE
-		$(error RELEASE is not set)
-	endif
 
 	# Copy kitura/cmd module into GOPATH
 	mkdir -p $(KITURA_SRC)
