@@ -40,7 +40,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: https://${GITHUB_TOKEN}@github.com/Kitura-Next/kitura-cli.git # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        upload_url: https://${GITHUB_TOKEN}@github.com/iceberg63/kitura-cli/releases/tag/v0.2.9 # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
         asset_path: ./kitura-cli_test_amd64.deb
-        asset_name: my-artifact.zip # test change name
+        asset_name: kitura-cli_test_amd64.deb
         asset_content_type: application/zip
