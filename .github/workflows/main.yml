@@ -36,9 +36,9 @@ jobs:
 
     - run: mkdir -p path/to/artifact
 
-    - run: echo hello > ${LINUX_PATH}/artifact/world1.txt
-    - run: echo hello > ${LINUX_PATH}/artifact/world2.txt
-    - run: echo hello > ${LINUX_PATH}/world3.txt
+    - run: echo hello > ${LINUX_DIR/artifact/world1.txt
+    - run: echo hello > ${LINUX_DIR}/artifact/world2.txt
+    - run: echo hello > ${LINUX_DIR}/world3.txt
 
     - uses: actions/upload-artifact@v2
       with:
