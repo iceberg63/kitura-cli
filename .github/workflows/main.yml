@@ -26,9 +26,13 @@ jobs:
 
     - run: mkdir -p path/to/artifact
 
-    - run: echo hello > path/to/artifact/world.txt
+    - run: echo hello > path/to/artifact/world1.txt
+    - run: echo hello > path/to/artifact/world2.txt
+    - run: echo hello > path/to/world3.txt
 
     - uses: actions/upload-artifact@v2
       with:
-        name: my-artifact
-        path: path/to/artifact/world.txt
+        name: kitura-cli_release_0.2.9
+        path: |
+          path/to/artifact/
+          path/to/world3.txt
