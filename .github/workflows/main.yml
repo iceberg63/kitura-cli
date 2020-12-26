@@ -1,6 +1,16 @@
 # This is a basic workflow to help you get started with Actions
 
 name: CI
+env:
+  RELEASE: 0.2.7
+  BINARY_NAME: kitura
+  PACKAGE_NAME: kitura-cli
+  LINUX_DIR: linux-amd64
+  LINUX_PATH: /usr/local/bin
+  LINUX_BINARY: $(LINUX_DIR)$(LINUX_PATH)/$(BINARY_NAME)
+  MACOS_DIR: darwin-amd64
+  MACOS_PATH: /
+  MACOS_BINARY: $(MACOS_DIR)$(MACOS_PATH)/$(BINARY_NAME)
 
 # Controls when the action will run. 
 on:
@@ -26,13 +36,13 @@ jobs:
 
     - run: mkdir -p path/to/artifact
 
-    - run: echo hello > path/to/artifact/world1.txt
-    - run: echo hello > path/to/artifact/world2.txt
-    - run: echo hello > path/to/world3.txt
+    - run: echo hello > ${LINUX_PATH}/artifact/world1.txt
+    - run: echo hello > ${LINUX_PATH}/artifact/world2.txt
+    - run: echo hello > ${LINUX_PATH}/world3.txt
 
     - uses: actions/upload-artifact@v2
       with:
-        name: kitura-cli_release_0.2.9
+        name: ${PACKAGE_NAME}_${RELEASE}
         path: |
           path/to/artifact/
           path/to/world3.txt
