@@ -1,5 +1,6 @@
 BINARY_NAME=kitura
 PACKAGE_NAME=kitura-cli
+ARCH=amd64
 LINUX_DIR=linux-amd64
 LINUX_PATH=/usr/local/bin
 LINUX_BINARY=$(LINUX_DIR)$(LINUX_PATH)/$(BINARY_NAME)
@@ -42,11 +43,15 @@ endif
 	cp kitura.rb.ver kitura.rb
 	cp $(LINUX_DIR)/DEBIAN/control.ver $(LINUX_DIR)/DEBIAN/control
 	sed -i $(SED_FLAGS) -e"s#@@RELEASE@@#$(RELEASE)#g" install.sh $(LINUX_DIR)/DEBIAN/control $(KITURA_SRC)/cmd/root.go kitura.rb
+	sed -i $(SED_FLAGS) -e"s#@@ARCH@@#$(ARCH)#g" $(LINUX_DIR)/DEBIAN/control
 
 setup_test:
 	# Copy kitura/cmd module into GOPATH
 	mkdir -p $(KITURA_SRC)
 	cp -R -p cmd $(KITURA_SRC)
+	
+rename_arm64:
+	# rename directories for arm64 build and packaging
 
 deps:
 	# Install dependencies
@@ -64,8 +69,8 @@ package-linux: build-linux-release
 	cp -R -p $(LINUX_DIR) $(PACKAGE_NAME)_$(RELEASE)
 	chmod -R 755 $(LINUX_DIR)$(LINUX_PATH)
 	dpkg-deb --build $(PACKAGE_NAME)_$(RELEASE)
-	mv $(PACKAGE_NAME)_$(RELEASE).deb $(PACKAGE_NAME)_$(RELEASE)_amd64.deb
-	tar -czf $(PACKAGE_NAME)_$(RELEASE)_linux.tar.gz $(LINUX_DIR)/usr/
+	mv $(PACKAGE_NAME)_$(RELEASE).deb $(PACKAGE_NAME)_$(RELEASE)_$(ARCH).deb
+	tar -czf $(PACKAGE_NAME)_$(RELEASE)__$(ARCH)_linux.tar.gz $(LINUX_DIR)/usr/
 	rm -r $(PACKAGE_NAME)_$(RELEASE)
 
 ## MacOS
