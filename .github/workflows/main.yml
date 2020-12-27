@@ -34,7 +34,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: mkdir -p ${LINUX_DIR}/artifact
+    - run: mkdir -p ${{ LINUX_DIR }}/artifact
 
     - run: echo hello > ${LINUX_DIR}/artifact/world1.txt
     - run: echo hello > ${LINUX_DIR}/artifact/world2.txt
