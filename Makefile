@@ -1,6 +1,6 @@
 BINARY_NAME=kitura
 PACKAGE_NAME=kitura-cli
-ARCH=amd64
+ARCH=???
 LINUX_DIR=linux-$(ARCH)
 LINUX_PATH=/usr/local/bin
 LINUX_BINARY=$(LINUX_DIR)$(LINUX_PATH)/$(BINARY_NAME)
@@ -28,6 +28,12 @@ clean:
 	rm -f $(LINUX_DIR)/DEBIAN/control
 	rm -rf $(LINUX_DIR)/usr
 	rm -rf $(MACOS_DIR)
+	
+set_arch_amd64:
+	ARCH=amd64
+
+set_arch_arm64:
+	ARCH=arm64
 
 setup_release:
 # Check RELEASE is set
@@ -41,7 +47,7 @@ endif
 	# Replace release placeholders in sources
 	cp install.sh.ver install.sh
 	cp kitura.rb.ver kitura.rb
-	mkdir $(LINUX_DIR)
+	mkdir -p $(LINUX_DIR)/DEBIAN
 	cp linux/DEBIAN/control.ver $(LINUX_DIR)/DEBIAN/control
 	sed -i $(SED_FLAGS) -e"s#@@RELEASE@@#$(RELEASE)#g" install.sh $(LINUX_DIR)/DEBIAN/control $(KITURA_SRC)/cmd/root.go kitura.rb
 	sed -i $(SED_FLAGS) -e"s#@@ARCH@@#$(ARCH)#g" $(LINUX_DIR)/DEBIAN/control
@@ -63,7 +69,7 @@ deps:
 build-linux-test: setup_test deps
 	GOOS=linux GOARCH=amd64 go build -o $(LINUX_BINARY) -v
 
-build-linux-release: setup_release deps
+build-linux-release: set_arch_amd64 setup_release deps
 	GOOS=linux GOARCH=$(ARCH) go build -o $(LINUX_BINARY) -v
 
 package-linux: build-linux-release
