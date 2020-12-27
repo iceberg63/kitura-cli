@@ -75,10 +75,13 @@ package-linux: build-linux-release
 	rm -r $(PACKAGE_NAME)_$(RELEASE)
 
 ## MacOS
-build-darwin: setup deps
+build-darwin: setup_test deps
 	GOOS=darwin GOARCH=amd64 go build -o $(MACOS_BINARY) -v
 
-package-darwin-tar: build-darwin
+build-darwin-release: setup_release deps
+	GOOS=darwin GOARCH=amd64 go build -o $(MACOS_BINARY) -v
+
+package-darwin-tar: build-darwin-release
 	tar -czf $(PACKAGE_NAME)_$(RELEASE)_darwin.tar.gz $(MACOS_DIR)
 
 package-darwin: package-darwin-tar
