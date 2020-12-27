@@ -17,7 +17,7 @@ function test_Linux() {
 
 case `uname` in
   Darwin)
-    make build-darwin
+    make build-darwin-test
     test_Darwin
     ;;
   Linux)
