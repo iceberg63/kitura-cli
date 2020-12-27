@@ -28,12 +28,6 @@ clean:
 	rm -f $(LINUX_DIR)/DEBIAN/control
 	rm -rf $(LINUX_DIR)/usr
 	rm -rf $(MACOS_DIR)
-	
-set_arch_amd64:
-	ARCH=amd64
-
-set_arch_arm64:
-	ARCH=arm64
 
 setup_release:
 # Check RELEASE is set
