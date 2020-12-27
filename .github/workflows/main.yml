@@ -33,6 +33,6 @@ jobs:
       with:
         name: kitura-cli_${{ env.RELEASE_VERSION }}
         path: |
-          kitura-cli_${{ env.RELEASE_VERSION }}_linux.tar.gz
-          kitura-cli_${{ env.RELEASE_VERSION }}_amd64.deb
+          kitura-cli_${{ env.RELEASE_VERSION }}_*_linux.tar.gz
+          kitura-cli_${{ env.RELEASE_VERSION }}_*.deb
           kitura.rb       
