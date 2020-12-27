@@ -24,18 +24,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run:  |
-        mkdir -p test123/artifact
+    - run: mkdir -p test123/artifact
 
-    - run: |
-        echo hello > test123/artifact/world1.txt
-        echo hello > test123/artifact/world2.txt
-        echo hello > test123/world3.txt
-        ls artifact
+    - run: echo hello > test123/artifact/world1.txt
 
     - uses: actions/upload-artifact@v2
       with:
         name: kitura-cli_0.0.0
         path: |
           test123/artifact/
-          test123/world3.txt
+          
