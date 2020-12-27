@@ -36,7 +36,7 @@ jobs:
 
     - run:  |
         mkdir -p $LINUX_DIR_PATH/artifact
-        mkdir -p ${LINUX_DIR_PATH}/artifact
+        mkdir -p a/neww/path/artifact
         ls
 
     - run: echo hello > $LINUX_DIR_PATH/artifact/world1.txt
