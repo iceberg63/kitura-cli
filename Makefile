@@ -69,7 +69,7 @@ deps:
 build-linux-test: setup_test deps
 	GOOS=linux GOARCH=amd64 go build -o $(LINUX_BINARY) -v
 
-build-linux-release: set_arch_amd64 setup_release deps
+build-linux-release: ARCH=amd64 setup_release deps
 	GOOS=linux GOARCH=$(ARCH) go build -o $(LINUX_BINARY) -v
 
 package-linux: build-linux-release
