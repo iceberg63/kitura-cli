@@ -75,7 +75,7 @@ package-linux: build-linux-release
 	rm -r $(PACKAGE_NAME)_$(RELEASE)
 
 ## MacOS
-build-darwin: setup_test deps
+build-darwin-test: setup_test deps
 	GOOS=darwin GOARCH=amd64 go build -o $(MACOS_BINARY) -v
 
 build-darwin-release: setup_release deps
