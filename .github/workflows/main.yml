@@ -23,5 +23,5 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: kitura-cli_0.0.0
+        name: kitura-cli_${{ github.event.release.tag_name }}
         path: linux-amd64          
