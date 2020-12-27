@@ -5,13 +5,13 @@ export RELEASE=$1
 
 function test_Darwin() {
     # Check that kitura init successfully produces a project
-    ./darwin-amd64/kitura init --dir TestProj
+    ./darwin-amd64/kitura init -b -d TestProj
     rm -rf TestProj
 }
 
 function test_Linux() {
     # Check that kitura init successfully produces a project
-    ./linux-amd64/usr/local/bin/kitura init --dir TestProj
+    ./linux-amd64/usr/local/bin/kitura init -b -d TestProj
     rm -rf TestProj
 }
 
