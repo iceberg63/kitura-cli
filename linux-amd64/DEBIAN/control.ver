@@ -2,7 +2,7 @@ Package: kitura-cli
 Version: @@RELEASE@@-1
 Section: base
 Priority: optional
-Architecture: amd64
+Architecture: @@ARCH@@
 Depends: libcurl4-openssl-dev, libssl-dev
 Maintainer: Kitura-Next <info@kituranext.org>
 Description: Command line interface for generating Kitura projects.
