@@ -32,4 +32,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: kitura-cli_${{ env.RELEASE_VERSION }}
-        path: linux-amd64          
+        path: |
+          kitura-cli_${{ env.RELEASE_VERSION }}_linux.tar.gz
+          kitura-cli_${{ env.RELEASE_VERSION }}_amd64.deb
+          kitura.rb       
