@@ -26,7 +26,8 @@ jobs:
 
     - run: mkdir -p test123/artifact
 
-    - run: echo hello > test123/artifact/world1.txt
+    - run: |
+        echo hello > test123/artifact/world1.txt
 
     - uses: actions/upload-artifact@v2
       with:
