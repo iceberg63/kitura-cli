@@ -1,6 +1,6 @@
 BINARY_NAME=kitura
 PACKAGE_NAME=kitura-cli
-ARCH=amd64
+ARCH=???
 LINUX_DIR=linux-$(ARCH)
 LINUX_PATH=/usr/local/bin
 LINUX_BINARY=$(LINUX_DIR)$(LINUX_PATH)/$(BINARY_NAME)
