@@ -11,8 +11,7 @@ export RELEASE=$1
 
 case `uname` in
   Darwin)
-    make build-darwin package-darwin
-    test_Darwin
+    make package-darwin
     ;;
   Linux)
     make package-linux
