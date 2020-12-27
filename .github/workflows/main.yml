@@ -34,15 +34,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: mkdir -p ${{ LINUX_DIR }}/artifact
+    - run: mkdir -p $LINUX_DIR/artifact
 
-    - run: echo hello > ${LINUX_DIR}/artifact/world1.txt
-    - run: echo hello > ${LINUX_DIR}/artifact/world2.txt
-    - run: echo hello > ${LINUX_DIR}/world3.txt
+    - run: echo hello > $LINUX_DIR/artifact/world1.txt
+    - run: echo hello > $LINUX_DIR/artifact/world2.txt
+    - run: echo hello > $LINUX_DIR/world3.txt
 
     - uses: actions/upload-artifact@v2
       with:
         name: ${PACKAGE_NAME}_${RELEASE}
         path: |
-          ${LINUX_DIR}/artifact/
-          ${LINUX_DIR}/world3.txt
+          $LINUX_DIR/artifact/
+          $LINUX_DIR/world3.txt
