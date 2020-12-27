@@ -41,6 +41,7 @@ endif
 	# Replace release placeholders in sources
 	cp install.sh.ver install.sh
 	cp kitura.rb.ver kitura.rb
+	mkdir $(LINUX_DIR)
 	cp linux/DEBIAN/control.ver $(LINUX_DIR)/DEBIAN/control
 	sed -i $(SED_FLAGS) -e"s#@@RELEASE@@#$(RELEASE)#g" install.sh $(LINUX_DIR)/DEBIAN/control $(KITURA_SRC)/cmd/root.go kitura.rb
 	sed -i $(SED_FLAGS) -e"s#@@ARCH@@#$(ARCH)#g" $(LINUX_DIR)/DEBIAN/control
@@ -63,7 +64,7 @@ build-linux-test: setup_test deps
 	GOOS=linux GOARCH=amd64 go build -o $(LINUX_BINARY) -v
 
 build-linux-release: setup_release deps
-	GOOS=linux GOARCH=amd64 go build -o $(LINUX_BINARY) -v
+	GOOS=linux GOARCH=$(ARCH) go build -o $(LINUX_BINARY) -v
 
 package-linux: build-linux-release
 	cp -R -p $(LINUX_DIR) $(PACKAGE_NAME)_$(RELEASE)
