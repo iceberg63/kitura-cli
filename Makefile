@@ -81,7 +81,7 @@ build-darwin: setup deps
 package-darwin-tar: build-darwin
 	tar -czf $(PACKAGE_NAME)_$(RELEASE)_darwin.tar.gz $(MACOS_DIR)
 
-package-darwin-release: package-darwin-tar
+package-darwin: package-darwin-tar
 	# This syntax defines SHA_VALUE at rule execution time.
 	# Note: separate rule to delay evaluation until tar.gz has been written
 	$(eval SHA_VALUE := $(shell shasum -a 256 $(PACKAGE_NAME)_$(RELEASE)_darwin.tar.gz | cut -d' ' -f1))
