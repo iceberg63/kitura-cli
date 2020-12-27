@@ -1,7 +1,7 @@
 BINARY_NAME=kitura
 PACKAGE_NAME=kitura-cli
 ARCH=amd64
-LINUX_DIR=linux-amd64
+LINUX_DIR=linux-$(ARCH)
 LINUX_PATH=/usr/local/bin
 LINUX_BINARY=$(LINUX_DIR)$(LINUX_PATH)/$(BINARY_NAME)
 MACOS_DIR=darwin-amd64
@@ -41,7 +41,7 @@ endif
 	# Replace release placeholders in sources
 	cp install.sh.ver install.sh
 	cp kitura.rb.ver kitura.rb
-	cp $(LINUX_DIR)/DEBIAN/control.ver $(LINUX_DIR)/DEBIAN/control
+	cp linux/DEBIAN/control.ver $(LINUX_DIR)/DEBIAN/control
 	sed -i $(SED_FLAGS) -e"s#@@RELEASE@@#$(RELEASE)#g" install.sh $(LINUX_DIR)/DEBIAN/control $(KITURA_SRC)/cmd/root.go kitura.rb
 	sed -i $(SED_FLAGS) -e"s#@@ARCH@@#$(ARCH)#g" $(LINUX_DIR)/DEBIAN/control
 
