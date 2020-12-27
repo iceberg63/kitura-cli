@@ -44,5 +44,5 @@ jobs:
       with:
         name: ${PACKAGE_NAME}_${RELEASE}
         path: |
-          path/to/artifact/
-          path/to/world3.txt
+          ${LINUX_DIR}/artifact/
+          ${LINUX_DIR}/world3.txt
