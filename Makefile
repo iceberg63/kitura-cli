@@ -1,4 +1,3 @@
-RELEASE=0.2.7
 BINARY_NAME=kitura
 PACKAGE_NAME=kitura-cli
 LINUX_DIR=linux-amd64
@@ -30,6 +29,10 @@ clean:
 	rm -rf $(MACOS_DIR)
 
 setup_release:
+# Check RELEASE is set
+ifndef RELEASE
+	$(error RELEASE is not set)
+endif
 
 	# Copy kitura/cmd module into GOPATH
 	mkdir -p $(KITURA_SRC)
