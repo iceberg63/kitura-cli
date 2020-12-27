@@ -36,16 +36,17 @@ jobs:
 
     - run:  |
         mkdir -p $LINUX_DIR_PATH/artifact
-        mkdir -p a/neww/path/artifact
         ls
 
-    - run: echo hello > $LINUX_DIR_PATH/artifact/world1.txt
-    - run: echo hello > $LINUX_DIR_PATH/artifact/world2.txt
-    - run: echo hello > $LINUX_DIR_PATH/world3.txt
+    - run: |
+        echo hello > $LINUX_DIR_PATH/artifact/world1.txt
+        echo hello > $LINUX_DIR_PATH/artifact/world2.txt
+        echo hello > $LINUX_DIR_PATH/world3.txt
+        ls artifact
 
     - uses: actions/upload-artifact@v2
       with:
-        name: ${PACKAGE_NAME}_${RELEASE}
+        name: $PACKAGE_NAME_$RELEASE
         path: |
           $LINUX_DIR_PATH/artifact/
           $LINUX_DIR_PATH/world3.txt
