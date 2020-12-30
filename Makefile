@@ -34,7 +34,7 @@ setup_release:
 ifndef RELEASE
 	$(error RELEASE is not set)
 endif
-ifdef $(ARCH == arm)
+ifdef ($(ARCH) == arm)
 	ARCH = armhf
 	echo ARCH = armhf
 endif
