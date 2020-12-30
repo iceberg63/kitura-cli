@@ -36,7 +36,7 @@ ifndef RELEASE
 endif
 ifeq ($(ARCH),arm)
 	ARCH = armhf
-	echo ARCH = armhf
+	echo "ARCH = armhf"
 endif
 
 	# Copy kitura/cmd module into GOPATH
