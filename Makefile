@@ -39,7 +39,6 @@ setup_release:
 ifndef RELEASE
 	$(error RELEASE is not set)
 endif
-
 	# Copy kitura/cmd module into GOPATH
 	mkdir -p $(KITURA_SRC)
 	cp -R -p cmd $(KITURA_SRC)
