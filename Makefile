@@ -10,6 +10,11 @@ MACOS_BINARY=$(MACOS_DIR)$(MACOS_PATH)/$(BINARY_NAME)
 
 KITURA_SRC=$(HOME)/go/src/kitura
 
+ifeq ($(ARCH),arm)
+	echo "ARCH = armhf"
+	ARCH=armhf
+endif
+
 # Handle additional param for sed -i on Darwin
 SED_FLAGS=
 UNAME_S := $(shell uname -s)
@@ -33,9 +38,6 @@ setup_release:
 # Check RELEASE is set
 ifndef RELEASE
 	$(error RELEASE is not set)
-endif
-ifeq ($(ARCH),arm)
-	echo "ARCH = armhf"
 endif
 
 	# Copy kitura/cmd module into GOPATH
