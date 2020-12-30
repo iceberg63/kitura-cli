@@ -35,7 +35,6 @@ ifndef RELEASE
 	$(error RELEASE is not set)
 endif
 ifeq ($(ARCH),arm)
-	ARCH := "armhf"
 	echo "ARCH = armhf"
 endif
 
