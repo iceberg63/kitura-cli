@@ -10,11 +10,6 @@ MACOS_BINARY=$(MACOS_DIR)$(MACOS_PATH)/$(BINARY_NAME)
 
 KITURA_SRC=$(HOME)/go/src/kitura
 
-ifeq ($(ARCH),arm)
-    echo "ARCH = armhf"
-    ARCH=armhf
-endif
-
 # Handle additional param for sed -i on Darwin
 SED_FLAGS=
 UNAME_S := $(shell uname -s)
