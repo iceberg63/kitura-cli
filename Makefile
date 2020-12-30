@@ -54,7 +54,7 @@ setup_test:
 	# Copy kitura/cmd module into GOPATH
 	mkdir -p $(KITURA_SRC)
 	cp -R -p cmd $(KITURA_SRC)
-	
+
 rename_arm64:
 	# rename directories for arm64 build and packaging
 
