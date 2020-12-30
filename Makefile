@@ -44,7 +44,6 @@ endif
 	cp linux/DEBIAN/control.ver $(LINUX_DIR)/DEBIAN/control
 	sed -i $(SED_FLAGS) -e"s#@@RELEASE@@#$(RELEASE)#g" install.sh $(LINUX_DIR)/DEBIAN/control $(KITURA_SRC)/cmd/root.go kitura.rb
 ifeq ($(ARCH),arm)
-    	echo "ARCH = armhf"
     	sed -i $(SED_FLAGS) -e"s#@@ARCH@@#armhf#g" $(LINUX_DIR)/DEBIAN/control
 else
 	sed -i $(SED_FLAGS) -e"s#@@ARCH@@#$(ARCH)#g" $(LINUX_DIR)/DEBIAN/control
