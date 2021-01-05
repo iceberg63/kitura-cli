@@ -4,7 +4,7 @@ ARCH=amd64
 LINUX_DIR=linux-$(ARCH)
 LINUX_PATH=/usr/local/bin
 LINUX_BINARY=$(LINUX_DIR)$(LINUX_PATH)/$(BINARY_NAME)
-MACOS_DIR=darwin-amd64
+MACOS_DIR=darwin-$(ARCH)
 MACOS_PATH=/
 MACOS_BINARY=$(MACOS_DIR)$(MACOS_PATH)/$(BINARY_NAME)
 
@@ -74,7 +74,7 @@ package-linux: build-linux-release
 	chmod -R 755 $(LINUX_DIR)$(LINUX_PATH)
 	dpkg-deb --build $(PACKAGE_NAME)_$(RELEASE)
 	mv $(PACKAGE_NAME)_$(RELEASE).deb $(PACKAGE_NAME)_$(RELEASE)_$(ARCH).deb
-	tar -czf $(PACKAGE_NAME)_$(RELEASE)__$(ARCH)_linux.tar.gz $(LINUX_DIR)/usr/
+	tar -czf $(PACKAGE_NAME)_$(RELEASE)_$(ARCH)_linux.tar.gz $(LINUX_DIR)/usr/
 	rm -r $(PACKAGE_NAME)_$(RELEASE)
 
 ## MacOS
@@ -82,13 +82,13 @@ build-darwin-test: setup_test deps
 	GOOS=darwin GOARCH=amd64 go build -o $(MACOS_BINARY) -v
 
 build-darwin-release: setup_release deps
-	GOOS=darwin GOARCH=amd64 go build -o $(MACOS_BINARY) -v
+	GOOS=darwin GOARCH=$(ARCH) go build -o $(MACOS_BINARY) -v
 
 package-darwin-tar: build-darwin-release
-	tar -czf $(PACKAGE_NAME)_$(RELEASE)_darwin.tar.gz $(MACOS_DIR)
+	tar -czf $(PACKAGE_NAME)_$(RELEASE)_$(ARCH)_darwin.tar.gz $(MACOS_DIR)
 
 package-darwin: package-darwin-tar
 	# This syntax defines SHA_VALUE at rule execution time.
 	# Note: separate rule to delay evaluation until tar.gz has been written
-	$(eval SHA_VALUE := $(shell shasum -a 256 $(PACKAGE_NAME)_$(RELEASE)_darwin.tar.gz | cut -d' ' -f1))
+	$(eval SHA_VALUE := $(shell shasum -a 256 $(PACKAGE_NAME)_$(RELEASE)_$(ARCH)_darwin.tar.gz | cut -d' ' -f1))
 	sed -i $(SED_FLAGS) -e"s#@@SHA256@@#$(SHA_VALUE)#" kitura.rb
