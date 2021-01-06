@@ -82,7 +82,7 @@ build-darwin-test: setup_test deps
 	GOOS=darwin GOARCH=amd64 go build -o $(MACOS_BINARY) -v
 
 build-darwin-release: setup_release deps
-	GOOS=darwin GOARCH=$(ARCH) go1.16beta1 build -o $(MACOS_BINARY) -v
+	GOOS=darwin GOARCH=$(ARCH) go build -o $(MACOS_BINARY) -v
 
 package-darwin-tar: build-darwin-release
 	tar -czf $(PACKAGE_NAME)_$(RELEASE)_$(ARCH)_darwin.tar.gz $(MACOS_DIR)
