@@ -27,14 +27,14 @@ jobs:
       run: |
         echo $RELEASE_VERSION
         echo ${{ env.RELEASE_VERSION }}
-#        ./build_package.sh $RELEASE_VERSION
-#        ls
+        ./build_package.sh $RELEASE_VERSION
+        ls
         
-#     - uses: actions/upload-artifact@v2
-#       with:
-#         name: kitura-cli_${{ env.RELEASE_VERSION }}
-#         path: |
-#           kitura-cli_${{ env.RELEASE_VERSION }}_*_linux.tar.gz
-#           kitura-cli_${{ env.RELEASE_VERSION }}_*.deb
-#           kitura-cli_${{ env.RELEASE_VERSION }}_darwin.tar.gz
-#           kitura.rb  
+    - uses: actions/upload-artifact@v2
+      with:
+        name: kitura-cli_${{ env.RELEASE_VERSION }}
+        path: |
+          kitura-cli_${{ env.RELEASE_VERSION }}_*_linux.tar.gz
+          kitura-cli_${{ env.RELEASE_VERSION }}_*.deb
+          kitura-cli_${{ env.RELEASE_VERSION }}_darwin.tar.gz
+          kitura.rb  
