@@ -8,7 +8,7 @@ MACOS_DIR=darwin-$(ARCH)
 MACOS_PATH=/
 MACOS_BINARY=$(MACOS_DIR)$(MACOS_PATH)/$(BINARY_NAME)
 
-KITURA_SRC=$(HOME)/go/src/kitura
+KITURA_SRC=/go/src/kitura
 
 # Handle additional param for sed -i on Darwin
 SED_FLAGS=
