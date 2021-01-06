@@ -26,4 +26,6 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Go Version
-      run: go version
+      run: |
+        export PATH=$PATH:/usr/local/go/bin
+        go version
