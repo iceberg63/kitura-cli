@@ -17,8 +17,8 @@ case `uname` in
     # make package-linux
     # make ARCH=arm64 package-linux
     # make ARCH=arm package-linux
-    make package-darwin-release
-    make ARCH=arm64 package-darwin-release
+    make package-darwin
+    make ARCH=arm64 package-darwin
     ;;
   *)
     echo "Unsupported OS: `uname`"
