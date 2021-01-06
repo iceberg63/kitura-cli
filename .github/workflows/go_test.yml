@@ -13,11 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Set up Go 1.x
-      uses: actions/setup-go@v2
-      with:
-        stable: 'false'
-        go-version: 'go1.16beta1' # The Go version to download (if necessary) and use.
+    - name: Set up Go 1.16beta
+      run: |
+        wget https://golang.org/dl/go1.16beta1.linux-amd64.tar.gz
+        ls /usr/local/
 
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
